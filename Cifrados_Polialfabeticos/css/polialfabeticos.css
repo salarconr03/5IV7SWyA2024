@@ -1,0 +1,30 @@
+.boton:hover{
+    background-color: rgb(0, 0, 0, 0.6);
+    color: white;
+}
+
+.cesar{
+    background-color: #4F0A54;
+    color: white;
+    border: #000;
+}
+
+#cesar{
+    background-color: #4F0A54;
+    color: white;
+    border: 0;
+
+}
+
+.viggenere{
+    background-color: #540A2C    ;
+    color: white;
+    border: #000;
+
+}
+
+#viggenere{
+    background-color: #540A2C;
+    color: white;
+    border: #000;
+}
