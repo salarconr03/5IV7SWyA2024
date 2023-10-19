@@ -115,7 +115,7 @@ function camposVacios(){
     }
 }
 
-function colocar(){
+function colocar2(){
     var copiar = document.getElementById("res").value;
     document.getElementById("txt").value = copiar
 }
