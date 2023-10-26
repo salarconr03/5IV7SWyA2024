@@ -11,6 +11,7 @@ package pkg03des;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.*;
+import java.util.Arrays;
 import javax.crypto.*;
 public class Main {
 
@@ -29,10 +30,10 @@ public class Main {
         //vamos a ocupar la clase KeyGenerator
         KeyGenerator generadorDES = KeyGenerator.getInstance("DES");
         //ahora debo definir el tamaño de la clave
-        generadorDES.init(56);
+        generadorDES.init(56); //56 bits
         
         //generamos la clave secreta
-        SecretKey clave = generadorDES.generateKey();
+        SecretKey clave = generadorDES.generateKey(); //se generan las 16 subllaves
         
         System.out.println("Veamos la clave: " + clave);
         //para poder ver la clave necesito un método para darle formato
@@ -49,12 +50,12 @@ public class Main {
         System.out.println("2. Cifrar con DES el archivo " + args[0] + " , generamos el resultado en " + args[0] + ".cifrado");
         
         //lo feo a cifrar
-        Cipher cifrador = Cipher.getInstance("DES/ECB/PKCSPadding");
+        Cipher cifrador = Cipher.getInstance("DES/ECB/PKCS5Padding");
         //ciframos
         cifrador.init(Cipher.ENCRYPT_MODE, clave);
         
         //leer el archivo y definir de cuanto en cuanto bytes de lectura
-        byte[] buffer = new byte[1000];
+        byte[] buffer = new byte[1000]; //se leen cada mil bits
         
         byte[] bufferCifrado;
         
@@ -66,6 +67,7 @@ public class Main {
         while(bytesleidos != -1){
             //que no he terminado de leer el archivo
             bufferCifrado = cifrador.update(buffer, 0, bytesleidos);
+            out.write(bufferCifrado);
             bytesleidos = in.read(buffer, 0, bytesleidos);
         }
         bufferCifrado = cifrador.doFinal();
@@ -74,23 +76,24 @@ public class Main {
         in.close();
         out.close();
         
-        System.out.println("Vamos a descifrar el archivo " + args[0] + ".cifrado" + " , y el resultado esta en " + args[0] + "descifrado");
+        System.out.println("Vamos a descifrar el archivo " + args[0] + ".cifrado" + " , y el resultado esta en " + args[0] + ".descifrado");
         
-        //ciframos
+        //desciframos
         cifrador.init(Cipher.DECRYPT_MODE, clave);
         
         //leer el archivo y definir de cuanto en cuanto bytes de lectura
         
         byte[] bufferPlano;
         
-        in = new FileInputStream(args[0]);
-        out = new FileOutputStream(args[0] + ".cifrado");
+        in = new FileInputStream(args[0] + ".cifrado");
+        out = new FileOutputStream(args[0] + ".descifrado");
         
         //leo cada archivo
         bytesleidos = in.read(buffer, 0, 1000);
         while(bytesleidos != -1){
             //que no he terminado de leer el archivo
             bufferPlano = cifrador.update(buffer, 0, bytesleidos);
+            out.write(bufferPlano);
             bytesleidos = in.read(buffer, 0, bytesleidos);
         }
         bufferPlano = cifrador.doFinal();
