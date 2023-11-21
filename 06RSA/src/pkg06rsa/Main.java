@@ -14,7 +14,8 @@ import javax.crypto.*;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 /*Esta librería sirve para poder realizar el calculo de primos más grandes pero a costo de que el bloque debe ser constante
-BC es un */
+BC es un provider el cual maneja CBC para el calculo de
+los bloques */
 
 
 public class Main {
