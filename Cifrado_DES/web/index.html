@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <title>Cifrado DES</title>
+</head>
+
+<body>
+    <header class="head">
+        <span class="Tittle">CIFRADO DES</span>
+        <span class="instruccions">
+            En nuestra plataforma de cifrado DES, el proceso es sencillo: primero, cargas el archivo de texto que deseas
+            cifrar, luego introduces una clave de hasta 8 caracteres para proteger tu archivo, y finalmente, pulsas el
+            botón de cifrado. Una vez completado el proceso, te proporcionamos un enlace de descarga para que puedas
+            obtener tu archivo cifrado de forma segura. Asegúrate de guardar tu clave en un lugar seguro, ya que la
+            necesitarás para descifrar el archivo en el futuro si es necesario.
+        </span>
+    </header>
+    <form  action="Cifrado" method="post" class="container" enctype="multipart/form-data">
+        <section class="file">
+            <input type="file" id="real-file" hidden="hidden" name="archivo_cifrado" />
+            <button type="button" id="custom-button">ESCOGE UN ARCHIVO</button>
+            <span id="custom-text">Aún no se ha elegido ningún archivo.</span>
+        </section>
+        <section class="input-key">
+            <label for="key">Ingresar Clave</label>
+            <input type="text" name="key" id="key" class="key">
+        </section>
+        <button type="submit" class="Cifrar">Cifrar</button>
+    </form>
+    <form action="Descifrado" method="post" class="container" enctype="multipart/form-data">
+        <section class="file">
+            <input type="file" id="real-file_des" hidden="hidden" name="archivo_descifrado"/>
+            <button type="button" id="custom-button_des">ESCOGE UN ARCHIVO</button>
+            <span id="custom-text_des">Aún no se ha elegido ningún archivo.</span>
+        </section>
+        <section class="input-key">
+            <label for="key">Ingresar Clave</label>
+            <input type="text" name="key" id="key" class="key">
+        </section>
+        <button type="submit" class="Cifrar">Descifrar</button>
+    </form>
+    
+    <script src="js/scrips.js"></script>
+</body>
+
+</html>
