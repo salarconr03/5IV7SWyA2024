@@ -10,8 +10,6 @@ package pkg03des;
  */
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.security.*;
-import java.util.Arrays;
 import javax.crypto.*;
 public class Main {
 
